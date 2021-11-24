@@ -14,7 +14,7 @@ function DummyRoute1() {
 
     const takeshot = () => {
         let div =
-            document.getElementById('photo');
+            document.getElementById('site');
 
         // Use the html2canvas
         // function to take a screenshot
@@ -78,17 +78,19 @@ function DummyRoute1() {
     }
 
     return (
-        <div className="App" id="photo">
-            <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: "#424040" }}>
-                <div className="container-fluid">
-                    <span className="navbar-brand">Genosis</span>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <a className="bi bi-lightning-charge-fill" style={{ color: "#FFD700" }} data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
+        <div className="App">
+            <div id="site">
+                <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: "#424040" }}>
+                    <div className="container-fluid">
+                        <span className="navbar-brand">Genosis</span>
+                        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div className="navbar-nav">
+                                <a className="bi bi-lightning-charge-fill" style={{ color: "#FFD700" }} data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <div className="modal fade" id="exampleModal" data-bs-backdrop="static" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content" style={{ backgroundColor: "#424040", color: "#FFFFFF", minHeight: "450px" }}>
