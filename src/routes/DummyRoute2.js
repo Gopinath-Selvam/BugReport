@@ -27,6 +27,16 @@ function DummyRoute2() {
             })
     }
 
+    const validateForm = (event) => {
+        const type = document.getElementById("report-type");
+        const description = document.getElementById("description");
+        if (type.value === "" || description.value === "") {
+            alert("Enter Valid Details!")
+            return false
+        } else return true
+    }
+
+
     const getBrowser = () => {
         var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
         if (/trident/i.test(M[1])) {
@@ -104,7 +114,7 @@ function DummyRoute2() {
                             </div>
                             {
                                 feedbackIsChecked === true ?
-                                    <form className="feedback">
+                                    <form className="feedback" onSubmit={validateForm}>
                                         <div className="mb-3">
                                             <label htmlFor="report-type" className="form-label">Report type</label>
                                             <input type="text" className="form-control" id="report-type" readOnly value="Feedback" />
@@ -119,7 +129,7 @@ function DummyRoute2() {
                                         <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Send</button>
                                     </form> :
                                     bugReportIsChecked === true ?
-                                        <form className="feedback">
+                                        <form className="feedback" onSubmit={validateForm}>
                                             <div className="mb-3">
                                                 <label htmlFor="report-type" className="form-label">Report type</label>
                                                 <input type="text" className="form-control" id="report-type" readOnly value="Bug / Error / Technical Problem" />
