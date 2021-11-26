@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import html2canvas from 'html2canvas';
 import '../App.css';
+import ADD_FEEDBACK from "../api/Mutation";
+import { useMutation } from "@apollo/client";
 
 function DummyRoute2() {
 
@@ -11,6 +13,7 @@ function DummyRoute2() {
     const [browserName, setBrowserName] = useState("");
     const [browserVersion, setBrowserVersion] = useState("");
     const [screenshot, setScreeshot] = useState(null);
+    const [addFeedback, { data, error, loading }] = useMutation(ADD_FEEDBACK);
 
 
     const takeshot = () => {
@@ -28,12 +31,37 @@ function DummyRoute2() {
     }
 
     const validateForm = (event) => {
+        event.preventDefault()
         const type = document.getElementById("report-type");
         const description = document.getElementById("description");
         if (type.value === "" || description.value === "") {
             alert("Enter Valid Details!")
             return false
-        } else return true
+        } else {
+            addFeedback({
+                variables: {
+                    "feedbackdetails": {
+                        "starRate": 5,
+                        "starRateFor": "ui",
+                        "description": description.value,
+                        "pageDetails": [
+                            {
+                                "url": "https://genosis.playwithbot.com/course/" + window.location.pathname,
+                                "title": document.title
+                            }
+                        ],
+                        "user": [
+                            {
+                                "id": "VLMD456",
+                                "name": "DK"
+                            }
+                        ]
+                    }
+                }
+            }).then(result => {
+                console.log(result)
+            })
+        }
     }
 
 
