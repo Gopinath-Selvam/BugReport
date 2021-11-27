@@ -100,6 +100,8 @@ function DummyRoute1() {
             }).then(result => {
                 console.log(result)
             })
+            setFeedbackIsChecked(false)
+            setBugReportIsChecked(false)
         }
     }
 
